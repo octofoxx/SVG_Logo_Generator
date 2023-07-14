@@ -27,7 +27,8 @@ inquirer.prompt([
 ])
 .then((answers)=> 
 {
-   const SVGlogo = shapes(answers);
+   const SVGlogo = //need to have 3 if statement for different shapes
+   shapes(answers);
    
    fs.writeFile('logo.svg', SVGlogo, (err) =>
    err ? console.log(err) : console.log('Successfully generated logo.svg!')
