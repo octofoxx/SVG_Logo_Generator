@@ -1,11 +1,14 @@
 const inquirer = require('inquirer');
 const shapes = require('./lib/shapes');
+const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt');
+inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt);
 
 inquirer.prompt([
     {
-        type: 'input',
+        type: 'maxlength-input',
         name: 'title',
-        message: 'Please choose up to three(3) characters for your logo.'
+        message: 'Please choose up to three(3) characters for your logo.',
+        maxLength:3
     },
     {
         type: 'input',
