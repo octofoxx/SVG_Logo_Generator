@@ -1,7 +1,47 @@
 const inquirer = require('inquirer');
-const shapes = require('./lib/shapes');
+
+const fs = require('fs');
+
+const {Triangle, Circle, Square} = require('./lib/shapes');
+
 const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt');
+
 inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt);
+
+function generateLogo (fileName, answers) {
+    //starts it out as empty 
+    let SVGlogo = "";
+
+    SVGlogo = `<svg width ="300" height="200">`;
+
+    SVGlogo += "<g>";
+
+    SVGlogo += `${answers.shape}`;
+
+    let shapeChoice;
+    if (answers.shape === "Triangle") {
+        shapeChoice = new Triangle();
+        SVGlogo +=  `<polygon points="200,10 300,190 100,190 fill= "${answers.shapeColor}" />`;
+
+    } else if(answers.shape === "Circle") {
+        shapeChoice = new Circle();
+        SVGlogo +=  `<circle cx="25" cy="75" r="20" fill= "${answers.shapeColor}" />`;
+
+    } else if(answers.shape === "Square") {
+        shapeChoice = new Square();
+        SVGlogo +=  `<rect x="10" y="10" width="30" height="30" fill= "${answers.shapeColor}" />`;
+    }
+    
+    SVGlogo += `<text x="150" y="130" text-anchor="middle" font-size="40" fill="${answers.textColor}">${answers.title}</text>`;
+  
+    SVGlogo += "</g>";
+  
+    SVGlogo += "</svg>";
+ 
+    fs.writeFile(fileName, SVGlogo, (err) =>
+    err ? console.log(err) : console.log('Successfully generated logo.svg!')
+    );
+};
 
 inquirer.prompt([
     {
@@ -19,7 +59,7 @@ inquirer.prompt([
         type: 'list',
         name: 'shape',
         message: 'Please choose a shape for your logo',
-        choices: ['triangle', 'circle', 'square'
+        choices: ['Triangle', 'Circle', 'Square'
     ],
     },
     {
@@ -30,10 +70,6 @@ inquirer.prompt([
 ])
 .then((answers)=> 
 {
-   const SVGlogo = //need to have 3 if statement for different shapes
-   shapes(answers);
-   
-   fs.writeFile('logo.svg', SVGlogo, (err) =>
-   err ? console.log(err) : console.log('Successfully generated logo.svg!')
- );
+   generateLogo('logo.svg', answers);
+ 
 });
