@@ -25,6 +25,8 @@
   
   In the command line, run `node index.js` to invoke the inquirer prompts. After answering all questions provided, a logo.svg file will be created with the chosen text, text color, shape and shape color.
 
+  https://drive.google.com/file/d/1JxO_T6joHGncVRxxo3CYj0BtCtp4zB5z/view - link to walkthrough of running the tests and the application.
+
 ## [Credits](#table-of-contents)
   
   https://github.com/jwarby/inquirer-maxlength-input-prompt - for the text limiter feature used.
