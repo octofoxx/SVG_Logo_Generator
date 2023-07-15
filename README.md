@@ -29,6 +29,8 @@
   
   https://github.com/jwarby/inquirer-maxlength-input-prompt - for the text limiter feature used.
 
+  https://github.com/octofoxx/SVG_Logo_Generator - repo for this project.
+
 ## [License](#table-of-contents)
   
   The application is covered under the following license:

@@ -1,3 +1,4 @@
+//required packages to run application
 const inquirer = require('inquirer');
 
 const fs = require('fs');
@@ -9,15 +10,20 @@ const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt');
 inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt);
 
 function generateLogo (fileName, answers) {
-    //starts it out as empty 
+
+    //starts file out as empty 
     let SVGlogo = "";
 
+    //sets the file to a 300x200 size
     SVGlogo = `<svg width ="300" height="200">`;
 
+    //<g> wraps the text into the shape so it is displayed in front of the shape
     SVGlogo += "<g>";
 
+    //adds shape picked by user to the file, filling the color based on user's input
     SVGlogo += `${answers.shape}`;
 
+    //conditional statement to determine which shape to generate based on user's selection
     let shapeChoice;
     if (answers.shape === "Triangle") {
         shapeChoice = new Triangle();
@@ -31,9 +37,11 @@ function generateLogo (fileName, answers) {
         shapeChoice = new Square();
         SVGlogo +=  `<rect x="100" y="70" width="100" height="100" fill= "${answers.shapeColor}" />`;
     }
-    
+
+    //adds the user's chosen text to the file
     SVGlogo += `<text x="150" y="130" text-anchor="middle" font-size="40" fill="${answers.textColor}">${answers.title}</text>`;
-  
+
+    //closing <g> and <svg> tags
     SVGlogo += "</g>";
   
     SVGlogo += "</svg>";
@@ -70,6 +78,7 @@ inquirer.prompt([
 ])
 .then((answers)=> 
 {
+    //use the generateLogo function to create the logo.svg file with user's chosen text, shape and colors
    generateLogo('logo.svg', answers);
  
 });
