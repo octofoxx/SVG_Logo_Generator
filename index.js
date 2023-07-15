@@ -21,15 +21,15 @@ function generateLogo (fileName, answers) {
     let shapeChoice;
     if (answers.shape === "Triangle") {
         shapeChoice = new Triangle();
-        SVGlogo +=  `<polygon points="200,10 300,190 100,190" fill= "${answers.shapeColor}" />`;
+        SVGlogo +=  `<polygon points="150,10 50,190 250,190"  fill= "${answers.shapeColor}" />`;
 
     } else if(answers.shape === "Circle") {
         shapeChoice = new Circle();
-        SVGlogo +=  `<circle cx="25" cy="75" r="20" fill= "${answers.shapeColor}" />`;
+        SVGlogo +=  `<circle cx="150" cy="115" r="65" fill= "${answers.shapeColor}" />`;
 
     } else if(answers.shape === "Square") {
         shapeChoice = new Square();
-        SVGlogo +=  `<rect x="10" y="10" width="30" height="30" fill= "${answers.shapeColor}" />`;
+        SVGlogo +=  `<rect x="100" y="70" width="100" height="100" fill= "${answers.shapeColor}" />`;
     }
     
     SVGlogo += `<text x="150" y="130" text-anchor="middle" font-size="40" fill="${answers.textColor}">${answers.title}</text>`;
