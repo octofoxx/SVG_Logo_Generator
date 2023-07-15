@@ -21,7 +21,7 @@ function generateLogo (fileName, answers) {
     let shapeChoice;
     if (answers.shape === "Triangle") {
         shapeChoice = new Triangle();
-        SVGlogo +=  `<polygon points="200,10 300,190 100,190 fill= "${answers.shapeColor}" />`;
+        SVGlogo +=  `<polygon points="200,10 300,190 100,190" fill= "${answers.shapeColor}" />`;
 
     } else if(answers.shape === "Circle") {
         shapeChoice = new Circle();
